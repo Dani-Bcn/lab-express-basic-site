@@ -1,34 +1,24 @@
-const express = require("express")
+const { response } = require('express')
+const { request } = require('express')
+const express =require('express')
+const res = require('express/lib/response')
 
 const app = express()
 
 app.use(express.static('public'))
 
-app.get('/',(resq,resp)=>{
-
-  resp.sendFile(__dirname + '/views/index.html')
-
+app.get("/", (req, res) =>{
+    res.sendFile(__dirname + "/views/index.html")
 })
 
-app.get('/about.html',(resq,resp)=>{
-
-    resp.sendFile(__dirname + "/views/about.html")
-
+app.get("/about", (req, res)=>{
+    res.sendFile(__dirname + "/views/about.html")
+})
+app.get("/work", (req, res)=>{
+    res.sendFile(__dirname + "/views/work.html")
+})
+app.get("/images", (req, res)=>{
+    res.sendFile(__dirname + "/views/images.html")
 })
 
-app.get('/images.html',(resq,resp)=>{
-
-    resp.sendFile(__dirname + "/views/images.html")
-
-})
-app.get('/work.html',(resq,resp)=>{
-
-    resp.sendFile(__dirname + "/views/work.html")
-
-})
-
-app.listen(3000, () => { 
-
-    console.log('Port 3000')
-
-})
+app.listen(3000 ,()=> console.log("Connetec: 3000"))
